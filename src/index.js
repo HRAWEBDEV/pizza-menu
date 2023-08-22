@@ -12,14 +12,14 @@ const Header = () => {
  );
 };
 
-const Pizza = ({ name, ingredients, photoName, price }) => {
+const Pizza = ({ name, ingredients, photoName, price, soldOut }) => {
  return (
-  <div className='pizza'>
+  <div className={`pizza ${soldOut ? 'sold-out' : ''}`}>
    <img src={photoName} alt={name} />
    <div>
     <h3>{name}</h3>
     <p>{ingredients}</p>
-    <span>{price}</span>
+    <span>{soldOut ? 'sold out' : price}</span>
    </div>
   </div>
  );
@@ -30,9 +30,13 @@ const Menu = () => {
   <main className='menu'>
    <h2>our menu</h2>
    <div className='pizzas'>
-    {pizzaData.map(({ name, ...other }) => (
-     <Pizza key={name} name={name} {...other} />
-    ))}
+    {pizzaData.length ? (
+     pizzaData.map(({ name, ...other }) => (
+      <Pizza key={name} name={name} {...other} />
+     ))
+    ) : (
+     <p> we are still working on the menu, please come back later</p>
+    )}
    </div>
   </main>
  );
