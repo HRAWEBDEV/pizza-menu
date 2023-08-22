@@ -21,6 +21,11 @@ body {
  padding-bottom: 6rem;
 }
 
+img {
+ max-width: 100%;
+ max-height: 100%;
+}
+
 .container {
  max-width: 80rem;
  margin: 0 auto;
@@ -99,14 +104,17 @@ body {
 
 .pizzas {
  list-style: none;
- display: grid;
- grid-template-columns: 1fr 1fr;
+ display: flex;
+ flex-wrap: wrap;
  gap: 4.8rem;
 }
 
 .pizza {
  display: flex;
  gap: 3.2rem;
+ flex-grow: 1;
+ flex-basis: 40%;
+ min-width: 35rem;
 }
 
 .pizza img {
